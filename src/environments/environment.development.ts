@@ -1,7 +1,6 @@
 export const environment = {
   production: false,
-  apiUrl: 'https://dev-api.myverkoper.com/api',
-  firebaseURL: '/Cards',
+  firebaseURL: '/cards',
   firebase: {
     apiKey: "AIzaSyBmZXzyl9McuNxeZmfz2rHx-kg01mOlJWo",
     authDomain: "cards-cc636.firebaseapp.com",
