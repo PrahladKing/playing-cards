@@ -13,18 +13,31 @@ export class DeckComponent implements OnInit{
 
   cardS = inject(CardService);
   ngOnInit(): void {
-    // this.getAllCards();
+    this.getAllCards();
   }
 
-  deck: Card[] = [];
+  startGame() {
+
+  }
+
   getAllCards() {
     this.cardS.getAllCards().valueChanges().subscribe({
       next: (value: Card[]) => {
-        this.deck = value;
+        this.shuffledDeck = this.shuffleCards(value);
+        console.log(this.shuffledDeck);
       }
     })
   }
 
+  shuffledDeck: Card[] = [];
+  shuffleCards(deck: Card[]) {
+    // Shuffle the array using Fisher-Yates algorithm
+    for (let i = deck.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [deck[i], deck[j]] = [deck[j], deck[i]]; // Swap elements
+    }
+    return deck;
+  }
 
 
 }
